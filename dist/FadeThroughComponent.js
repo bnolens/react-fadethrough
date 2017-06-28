@@ -39,18 +39,29 @@ var FadeThroughComponent = function (_Component) {
       var inactiveStyle = {
         position: 'absolute',
         transition: 'opacity 3s',
-        opacity: '0'
+        opacity: '0',
+        display: 'flex',
+        flex: 1,
+        width: '100%'
       };
 
       var activeStyle = {
         position: 'absolute',
         transition: 'opacity 3s',
-        opacity: '1'
+        opacity: '1',
+        display: 'flex',
+        flex: 1,
+        width: '100%'
+      };
+
+      var style = {
+        display: 'flex',
+        flex: 1
       };
 
       return _react2.default.createElement(
         'div',
-        null,
+        { style: style },
         this.props.children.map(function (child, index) {
           return _react2.default.createElement(
             _FadeThroughChild2.default,

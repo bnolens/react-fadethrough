@@ -59,7 +59,9 @@ var FadeThroughContainer = function (_Component) {
     value: function render() {
       var style = {
         width: this.props.width,
-        height: this.props.height
+        height: this.props.height,
+        display: 'flex',
+        flex: 1
       };
       return _react2.default.createElement(
         'div',
