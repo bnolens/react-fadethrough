@@ -42,7 +42,8 @@ var FadeThroughComponent = function (_Component) {
         opacity: '0',
         display: 'flex',
         flex: 1,
-        width: '100%'
+        width: '100%',
+        height: '100%'
       };
 
       var activeStyle = {
@@ -51,7 +52,8 @@ var FadeThroughComponent = function (_Component) {
         opacity: '1',
         display: 'flex',
         flex: 1,
-        width: '100%'
+        width: '100%',
+        height: '100%'
       };
 
       var style = {

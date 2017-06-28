@@ -10,7 +10,8 @@ export default class FadeThroughComponent extends Component {
       opacity: '0',
       display: 'flex',
       flex: 1,
-      width: '100%'
+      width: '100%',
+      height: '100%'
     }
 
     const activeStyle = {
@@ -19,7 +20,8 @@ export default class FadeThroughComponent extends Component {
       opacity: '1',
       display: 'flex',
       flex: 1,
-      width: '100%'
+      width: '100%',
+      height: '100%'
     }
 
     const style = {
