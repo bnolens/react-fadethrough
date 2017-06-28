@@ -7,17 +7,28 @@ export default class FadeThroughComponent extends Component {
     const inactiveStyle = {
       position: 'absolute',
       transition: 'opacity 3s',
-      opacity: '0'
+      opacity: '0',
+      display: 'flex',
+      flex: 1,
+      width: '100%'
     }
 
     const activeStyle = {
       position: 'absolute',
       transition: 'opacity 3s',
-      opacity: '1'
+      opacity: '1',
+      display: 'flex',
+      flex: 1,
+      width: '100%'
     }
 
+    const style = {
+        display: 'flex',
+        flex: 1
+     }
+
     return (
-      <div>
+      <div style={style}>
       { this.props.children.map((child, index) => (
         <FadeThroughChild
           key={ 'fade-through-child' + index }
