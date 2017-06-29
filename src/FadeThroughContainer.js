@@ -9,14 +9,18 @@ export default class FadeThroughContainer extends Component {
   }
 
   componentDidMount() {
-    this.interval = setInterval(
-      this.next(),
-      this.props.delay
-    )
+    this.startTimer()
   }
 
   componentWillUnmount() {
     clearInterval(this.interval)
+  }
+
+  startTimer() {
+    this.interval = setInterval(
+      this.next(),
+      this.props.delay
+    )
   }
 
   next() {
@@ -25,6 +29,15 @@ export default class FadeThroughContainer extends Component {
       if (this.state.activeIndex === this.props.children.length)
         this.setState({ activeIndex: 0 })
     }
+  }
+
+  reset() {
+    this.setState({
+      activeIndex: 0
+    })
+
+    clearInterval(this.interval)
+    this.startTimer()
   }
 
   render() {
@@ -50,5 +63,6 @@ export default class FadeThroughContainer extends Component {
 FadeThroughContainer.propTypes = {
   width: React.PropTypes.string.isRequired,
   height: React.PropTypes.string.isRequired,
-  delay: React.PropTypes.number.isRequired
+  delay: React.PropTypes.number.isRequired,
+  reset: React.PropTypes.func
 }
