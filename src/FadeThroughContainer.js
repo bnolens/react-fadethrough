@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Children } from 'react'
 import FadeThroughComponent from './FadeThroughComponent'
 
 export default class FadeThroughContainer extends Component {
@@ -14,6 +14,14 @@ export default class FadeThroughContainer extends Component {
 
   componentWillUnmount() {
     clearInterval(this.interval)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const oldCount = Children.count(this.props.children)
+    const newCount = Children.count(nextProps.children)
+    if (oldCount !== newCount) {
+      this.reset()
+    }
   }
 
   startTimer() {

@@ -37,12 +37,26 @@ var FadeThroughContainer = function (_Component) {
   _createClass(FadeThroughContainer, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      this.interval = setInterval(this.next(), this.props.delay);
+      this.startTimer();
     }
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
       clearInterval(this.interval);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var oldCount = _react.Children.count(this.props.children);
+      var newCount = _react.Children.count(nextProps.children);
+      if (oldCount !== newCount) {
+        this.reset();
+      }
+    }
+  }, {
+    key: 'startTimer',
+    value: function startTimer() {
+      this.interval = setInterval(this.next(), this.props.delay);
     }
   }, {
     key: 'next',
@@ -53,6 +67,16 @@ var FadeThroughContainer = function (_Component) {
         _this2.setState({ activeIndex: _this2.state.activeIndex + 1 });
         if (_this2.state.activeIndex === _this2.props.children.length) _this2.setState({ activeIndex: 0 });
       };
+    }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.setState({
+        activeIndex: 0
+      });
+
+      clearInterval(this.interval);
+      this.startTimer();
     }
   }, {
     key: 'render',
@@ -87,5 +111,6 @@ exports.default = FadeThroughContainer;
 FadeThroughContainer.propTypes = {
   width: _react2.default.PropTypes.string.isRequired,
   height: _react2.default.PropTypes.string.isRequired,
-  delay: _react2.default.PropTypes.number.isRequired
+  delay: _react2.default.PropTypes.number.isRequired,
+  reset: _react2.default.PropTypes.func
 };
